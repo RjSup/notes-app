@@ -10,7 +10,7 @@ export async function fetchNotes(): Promise<Note[]> {
 }
 
 export async function fetchNote(id: number): Promise<Note[]> {
-    const res = await fetch("/api/notes");
+    const res = await fetch(`/api/notes/${id}`);
     return res.json();
 }
 

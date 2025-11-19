@@ -1,8 +1,9 @@
-package com.example.notesapp.todo;
+package com.example.notesapp.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NoteRepository extends JpaRepository<Note, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
+
 }

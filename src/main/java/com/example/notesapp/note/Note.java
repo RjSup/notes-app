@@ -1,4 +1,4 @@
-package com.example.notesapp.todo;
+package com.example.notesapp.note;
 
 import jakarta.persistence.*;
 
@@ -14,7 +14,7 @@ public class Note {
 
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
+            generator = "todo_sequence"
     )
     private Long id;
     private String title;

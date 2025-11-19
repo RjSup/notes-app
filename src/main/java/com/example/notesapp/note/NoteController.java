@@ -1,4 +1,4 @@
-package com.example.notesapp.todo;
+package com.example.notesapp.note;
 
 import org.springframework.web.bind.annotation.*;
 
