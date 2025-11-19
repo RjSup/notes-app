@@ -1,14 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import NotesList from "./components/NotesList";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing";
+import Notes from "./pages/Notes";
 
 function App() {
-  return (
-      <div>
-          < NotesList />
-      </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route path="/notes" element={<Notes />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
