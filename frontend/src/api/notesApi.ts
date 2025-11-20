@@ -5,17 +5,17 @@ export type Note = {
 }
 
 export async function fetchNotes(): Promise<Note[]> {
-    const res = await fetch("/api/notes");
+    const res = await fetch("http://localhost:8080/api/notes");
     return res.json();
 }
 
 export async function fetchNote(id: number): Promise<Note[]> {
-    const res = await fetch(`/api/notes/${id}`);
+    const res = await fetch(`http://localhost:8080/api/notes/${id}`);
     return res.json();
 }
 
 export async function createNote(note: Note): Promise<Note[]> {
-    const res = await fetch("/api/notes", {
+    const res = await fetch("http://localhost:8080/api/notes", {
         method: "POST",
         headers: { "Content-Type" : "application/json" },
         body: JSON.stringify(note),
@@ -25,7 +25,7 @@ export async function createNote(note: Note): Promise<Note[]> {
 }
 
 export async function updateNote(id: number, note: Note): Promise<Note[]> {
-    const res = await fetch(`/api/notes/${id}`, {
+    const res = await fetch(`http://localhost:8080/api/notes/${id}`, {
         method: "PUT",
         headers: { "Content-Type" : "application/json" },
         body: JSON.stringify(note),

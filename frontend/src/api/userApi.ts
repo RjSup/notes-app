@@ -6,17 +6,17 @@ export type User = {
 };
 
 export async function fetchUsers(): Promise<User[]> {
-    const res = await fetch("/api/users");
+    const res = await fetch("http://localhost:8080/api/users");
     return res.json();
 }
 
 export async function fetchUser(id: number): Promise<User[]> {
-    const res = await fetch(`/api/user/${id}`);
+    const res = await fetch(`http://localhost:8080/api/users/${id}`);
     return res.json();
 }
 
-export async function createUser(user: User): Promise<User[]> {
-    const res = await fetch("/api/user", {
+export async function createUser(user: { username: string, email: string; password: string }): Promise<User[]> {
+    const res = await fetch("http://localhost:8080/api/users", {
         method: "POST",
         headers: { "Content-Type" : "application/json" },
         body: JSON.stringify(user),
@@ -26,7 +26,7 @@ export async function createUser(user: User): Promise<User[]> {
 }
 
 export async function updateUser(id: number, user: User): Promise<User[]> {
-    const res = await fetch(`/api/user/${id}`, {
+    const res = await fetch(`http://localhost:8080/api/users/${id}`, {
         method: "PUT",
         headers: { "Content-Type" : "application/json" },
         body: JSON.stringify(user),
@@ -36,5 +36,5 @@ export async function updateUser(id: number, user: User): Promise<User[]> {
 }
 
 export async function deleteUser(id: number): Promise<void> {
-    await fetch(`/api/user/${id}`, { method: "DELETE" });
+    await fetch(`/api/users/${id}`, { method: "DELETE" });
 }

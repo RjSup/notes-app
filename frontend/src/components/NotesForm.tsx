@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, {useState, useEffect, ChangeEvent} from "react";
 import { createNote, updateNote, Note } from "../api/notesApi";
 
 type Props = {
@@ -42,7 +42,7 @@ export default function NoteForm({ existingNote, onSuccess, onCancel }: Props) {
                     type="text"
                     placeholder="Note title"
                     value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(e):void => setTitle(e.target.value)}
                     required
                     style={{ width: "100%", marginBottom: "0.5rem" }}
                 />

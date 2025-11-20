@@ -1,0 +1,134 @@
+/* ------------------------- */
+/* Base structure            */
+/* ------------------------- */
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    background-color: #8ab4ff;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5rem 0 5rem;
+    z-index: 100;
+}
+
+/* ------------------------- */
+/* Logo                      */
+/* ------------------------- */
+
+.navlogo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.logo {
+    letter-spacing: 0.05rem;
+}
+
+/* ------------------------- */
+/* Desktop Nav List          */
+/* ------------------------- */
+
+.navlist {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    letter-spacing: 0.05rem;
+}
+
+.navlist a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.navlist a:hover {
+    color: #5f9aff;
+}
+
+/* ------------------------- */
+/* Toggle Button             */
+/* ------------------------- */
+
+.navtoggle {
+    all: unset;
+    cursor: pointer;
+
+    display: none;
+
+    width: 2rem;
+    height: 1.5rem;
+
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.navtoggle div {
+    height: 3px;
+    width: 100%;
+    background: white;
+    transition: 200ms ease;
+}
+
+/* ------------------------- */
+/* Mobile Overlay Menu       */
+/* ------------------------- */
+@media (max-width: 768px) {
+    .navtoggle {
+        display: flex;
+    }
+
+    .navlist {
+        height: 100vh;
+        position: fixed;
+        top: 1rem;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        background: #1e1f23;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+        font-size: 2rem;
+
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+
+        transition: transform 300ms ease, opacity 200ms ease;
+    }
+
+    /* Show menu when open */
+    :global(nav[nav-state="open"]) .navlist {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+        background-color: #8ab4ff;
+    }
+
+    /* Toggle animation */
+    :global(nav[nav-state="open"]) .navtoggle div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    :global(nav[nav-state="open"]) .navtoggle div:nth-child(2) {
+        opacity: 0;
+    }
+    :global(nav[nav-state="open"]) .navtoggle div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+}
+
+
