@@ -3,69 +3,100 @@ import { useState } from "react";
 import SignupModal from "./SignupModal";
 import LoginModal from "./LoginModal";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Navbar() {
-    const [open, setOpen] = useState(false);
+    // states
+    const [menuOpen, setMenuOpen] = useState(false);
     const [loginOpen, setLoginOpen] = useState(false);
     const [signupOpen, setSignupOpen] = useState(false);
 
+    // check auth
     const { isAuthenticated, logout, login } = useAuth();
     const navigate = useNavigate();
 
-    const handleSignupSuccess = (token: string) => {
-        login(token);
-        navigate("/notes");
-    };
-
-    const handleLoginSuccess = (token: string) => {
+    const handleAuthSuccess = (token: string) => {
         login(token);
         navigate("/notes");
     };
 
     return (
-        <nav className={styles.nav} nav-state={open ? "open" : "closed"}>
-            <a className={styles.navlogo} href="/">RJ</a>
+        <nav className={styles.nav} data-state={menuOpen ? "open" : "closed"}>
+            <Link className={styles.navlogo} to="/">Notesly</Link>
 
+            {/* Burger things*/}
             <button
                 className={styles.navtoggle}
-                onClick={() => setOpen(!open)}
+                onClick={() => setMenuOpen(!menuOpen)}
                 aria-label="Toggle Menu"
             >
                 <div></div><div></div><div></div>
             </button>
 
             <ul className={styles.navlist}>
-                <li><a href="/">Home</a></li>
+                {/* main links*/}
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
 
-                {isAuthenticated && <li><a href="/notes">Dashboard</a></li>}
+                {isAuthenticated && (
+                    <>
+                        <li>
+                            <Link to="/notes">Dashboard</Link>
+                        </li>
+                        <li>
+                            <Link to="/profile">Profile</Link>
+                        </li>
+                    </>
 
+                )}
+
+                {/* user not auth must register*/}
                 {!isAuthenticated && (
                     <>
-                        <li><a href="#" onClick={(e) => { e.preventDefault(); setLoginOpen(true); }}>Login</a></li>
-                        <li><a href="#" onClick={(e) => { e.preventDefault(); setSignupOpen(true); }}>Signup</a></li>
+                        <li>
+                            <button
+                                type="button"
+                                onClick={() => setLoginOpen(true)}
+                            >
+                                Login
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                type="button"
+                                onClick={() => setSignupOpen(true)}
+                            >
+                                Signup
+                            </button>
+                        </li>
                     </>
                 )}
 
+                {/* user has auth want to leave*/}
                 {isAuthenticated && (
                     <li>
-                        <a href="#" onClick={(e) => { e.preventDefault(); logout(); }}>
+                        <button
+                            type="button"
+                            onClick={() => logout()}
+                        >
                             Logout
-                        </a>
+                        </button>
                     </li>
                 )}
             </ul>
 
+            {/* whether to show the auth models */}
             <SignupModal
                 open={signupOpen}
                 onClose={() => setSignupOpen(false)}
-                onSignupSuccess={handleSignupSuccess}
+                onSignupSuccess={handleAuthSuccess}
             />
 
             <LoginModal
                 open={loginOpen}
                 onClose={() => setLoginOpen(false)}
-                onLoginSuccess={handleLoginSuccess}
+                onLoginSuccess={handleAuthSuccess}
             />
         </nav>
     );

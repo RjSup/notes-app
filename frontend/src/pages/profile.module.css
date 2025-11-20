@@ -1,0 +1,11 @@
+.navContainer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3rem;
+}
+
+.landingContainer {
+    height: 90vh;
+    background-color: #8ab4ff;
+    padding-top: 5rem;
+}
