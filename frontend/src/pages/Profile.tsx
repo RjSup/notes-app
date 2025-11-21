@@ -1,5 +1,6 @@
 import styles from "./profile.module.css";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer"
 import { useEffect, useState } from "react";
 import {fetchMe, User} from "../api/userApi";
 
@@ -56,6 +57,7 @@ export default function Profile() {
                     <h1>Hello, {user?.username}</h1>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 }

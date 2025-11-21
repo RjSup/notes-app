@@ -3,6 +3,7 @@ import styles from "./landing.module.css";
 import {useState} from "react";
 import SignupModal from "../components/SignupModal";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer"
 import {useAuth} from "../context/AuthContext";
 import img from "../assets/img.png";
 
@@ -59,7 +60,7 @@ export default function Landing() {
                 onClose={() => setShowSignup(false)}
                 onSignupSuccess={handleSignupSuccess}
             />
-
+                <Footer />
         </>
     );
 }

@@ -15,7 +15,7 @@
 .contentContainer {
     display: grid;
     grid-template-columns: 5rem 1fr;
-    height: 90%;
+    height: 85%;
     border: 2px solid black;
     background-color: #f9f9f9;
 }
