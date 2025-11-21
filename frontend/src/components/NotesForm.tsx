@@ -1,17 +1,17 @@
-import React, {useState, useEffect, ChangeEvent} from "react";
+import React, { useState, useEffect } from "react";
 import { createNote, updateNote, Note } from "../api/notesApi";
+import styles from "./notesform.module.css";
 
 type Props = {
-    existingNote?: Note;               // for edit mode
-    onSuccess: () => void;             // refresh list after save
-    onCancel?: () => void;             // optional cancel button
+    existingNote?: Note;
+    onSuccess: () => void;
+    onCancel?: () => void;
 };
 
 export default function NoteForm({ existingNote, onSuccess, onCancel }: Props) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
-    // If editing: pre-fill fields
     useEffect(() => {
         if (existingNote) {
             setTitle(existingNote.title);
@@ -21,7 +21,6 @@ export default function NoteForm({ existingNote, onSuccess, onCancel }: Props) {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
         const noteData = { title, content };
 
         if (existingNote && existingNote.id) {
@@ -34,36 +33,38 @@ export default function NoteForm({ existingNote, onSuccess, onCancel }: Props) {
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ marginBottom: "2rem" }}>
-            <h2>{existingNote ? "Edit Note" : "Create Note"}</h2>
+        <form className={styles.formContainer} onSubmit={handleSubmit}>
+            <h2 className={styles.title}>
+                {existingNote ? "Edit Note" : "Create Note"}
+            </h2>
 
-            <div>
-                <input
-                    type="text"
-                    placeholder="Note title"
-                    value={title}
-                    onChange={(e):void => setTitle(e.target.value)}
-                    required
-                    style={{ width: "100%", marginBottom: "0.5rem" }}
-                />
-            </div>
+            <input
+                className={styles.input}
+                type="text"
+                placeholder="Note title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+            />
 
-            <div>
-        <textarea
-            placeholder="Write something..."
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-            style={{ width: "100%", height: "120px" }}
-        />
-            </div>
+            <textarea
+                className={styles.textarea}
+                placeholder="Write something..."
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                required
+            />
 
-            <button type="submit">
+            <button className={styles.submit} type="submit">
                 {existingNote ? "Save Changes" : "Add Note"}
             </button>
 
             {onCancel && (
-                <button type="button" onClick={onCancel} style={{ marginLeft: "1rem" }}>
+                <button
+                    className={styles.cancel}
+                    type="button"
+                    onClick={onCancel}
+                >
                     Cancel
                 </button>
             )}

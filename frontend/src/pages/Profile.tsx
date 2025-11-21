@@ -1,4 +1,4 @@
-import styles from "./landing.module.css";
+import styles from "./profile.module.css";
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import {fetchMe, User} from "../api/userApi";
@@ -46,7 +46,16 @@ export default function Profile() {
                 <Navbar />
             </div>
 
-            <h1>Hello, {user?.username}</h1>
+
+            <div className={styles.contentContainer}>
+                <div className={styles.sidebarContent}>
+
+
+                </div>
+                <div className={styles.bodyContent}>
+                    <h1>Hello, {user?.username}</h1>
+                </div>
+            </div>
         </div>
     );
 }

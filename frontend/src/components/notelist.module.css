@@ -1,16 +1,89 @@
+/* Page layout */
 .main {
-    margin: 0;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem 1rem;
+    font-family: system-ui, sans-serif;
 }
 
+/* Title */
 .h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
 }
 
+/* Create section */
 .createSection {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
+    margin-bottom: 2rem;
+}
+
+/* Individual note card */
+.noteCard {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid #e6e6e6;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.noteCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* Note title */
+.noteTitle {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Note text */
+.noteContent {
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
+    color: #444;
+}
+
+/* Button base */
+.button {
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+}
+
+/* Edit button */
+.editButton {
+    composes: button;
+    background: #4a90e2;
+    color: white;
+}
+
+.editButton:hover {
+    background: #357ac7;
+}
+
+/* Delete button */
+.deleteButton {
+    composes: button;
+    background: #ff4f4f;
+    color: white;
+}
+
+.deleteButton:hover {
+    background: #d63838;
 }

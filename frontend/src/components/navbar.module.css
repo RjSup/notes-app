@@ -78,7 +78,97 @@
     transition: 200ms ease;
 }
 
-/* ------------------------- */
+.homebutton {
+    padding: 0.5rem;
+    border: 2px solid white;
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+    background: #8ab4ff none;
+    color: white;
+    transition: background 0.2s ease;
+}
+
+.homebutton:hover {
+    color: #5f9aff;
+}
+
+.loginbutton {
+    padding: 0.5rem;
+    border: 2px solid white;
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+    background: #8ab4ff none;
+    color: white;
+    transition: background 0.2s ease;
+}
+
+.loginbutton:hover {
+    color: #5f9aff;
+}
+
+.notesbutton {
+    padding: 0.5rem;
+    border: 2px solid white;
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+    background: #8ab4ff none;
+    color: white;
+    transition: background 0.2s ease;
+}
+
+.notesbutton:hover {
+    color: #5f9aff;
+}
+
+.profilebutton {
+    padding: 0.5rem;
+    border: 2px solid white;
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+    background: #8ab4ff none;
+    color: white;
+    transition: background 0.2s ease;
+}
+
+.profilebutton:hover {
+    color: #5f9aff;
+}
+
+.signupbutton {
+    padding: 0.5rem;
+    border: 2px solid white;
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+    background: #8ab4ff none;
+    color: white;
+    transition: background 0.2s ease;
+}
+
+.signupbutton:hover {
+    color: #5f9aff;
+}
+
+.logoutbutton {
+    padding: 0.5rem;
+    border: 2px solid white;
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+    background: #8ab4ff none;
+    color: white;
+    transition: background 0.2s ease;
+}
+
+.logoutbutton:hover {
+    color: #5f9aff;
+}
+
+    /* ------------------------- */
 /* Mobile Overlay Menu       */
 /* ------------------------- */
 @media (max-width: 768px) {

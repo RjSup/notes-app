@@ -1,4 +1,4 @@
-import styles from "./signupmodal.module.css";
+import styles from "./login.module.css";
 import {FormEvent, useEffect, useState} from "react";
 import { login, LoginData, AuthResponse } from "../api/authApi";
 
@@ -78,10 +78,13 @@ export default function LoginModal({ open, onClose, onLoginSuccess }: LoginModal
                     />
 
                     <div className={styles.modalButtons}>
-                        <button type="submit" disabled={loading}>
+                        <button
+                            className={styles.login}
+                            type="submit" disabled={loading}>
                             {loading ? "Logging in…" : "Login"}
                         </button>
                         <button
+                            className={styles.cancel}
                             type="button"
                             onClick={handleCancel}
                             disabled={loading}

@@ -53,13 +53,14 @@ export default function SignupModal({ open, onClose, onSignupSuccess }: SignupMo
     return (
         <div className={styles.modalOverlay} role="dialog" aria-modal="true">
             <div className={styles.modalContent}>
-                <h2>Signup</h2>
+                <h2 className={styles.title}>Signup</h2>
 
                 <form onSubmit={handleSubmit} className={styles.modalForm}>
                     {/*show errors*/}
                     {errorMsg && <p className={styles.error}>{errorMsg}</p>}
 
                     <input
+                        className={styles.username}
                         type="text"
                         placeholder="Username"
                         value={username}
@@ -88,10 +89,14 @@ export default function SignupModal({ open, onClose, onSignupSuccess }: SignupMo
 
                     {/* sumbit btns */}
                     <div className={styles.modalButtons}>
-                        <button type="submit" disabled={loading}>
+                        <button
+                            className={styles.submitbutton}
+                            type="submit" disabled={loading}>
                             {loading ? "Signing up…" : "Signup"}
                         </button>
-                        <button type="button" onClick={onClose} disabled={loading}>
+                        <button
+                            className={styles.cancelbutton}
+                            type="button" onClick={onClose} disabled={loading}>
                             Cancel
                         </button>
                     </div>

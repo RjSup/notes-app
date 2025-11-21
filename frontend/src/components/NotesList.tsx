@@ -46,29 +46,29 @@ export default function NotesList() {
 
             {/* LIST */}
             {notes.map((note) => (
-                <div
-                    key={note.id}
-                    style={{ border: "1px solid gray", padding: "1rem", marginTop: "1rem" }}
-                >
-                    <h3>{note.title}</h3>
-                    <p>{note.content}</p>
+                <div key={note.id} className={styles.noteCard}>
+                    <h3 className={styles.noteTitle}>{note.title}</h3>
+                    <p className={styles.noteContent}>{note.content}</p>
 
-                    <button onClick={() => setEditingNote(note)}>
+                    <button
+                        className={styles.editButton}
+                        onClick={() => setEditingNote(note)}
+                    >
                         Edit
                     </button>
 
                     <button
+                        className={styles.deleteButton}
                         onClick={() => {
-                            if (note.id) {
-                                deleteNote(note.id).then(loadNotes);
-                            }
+                            if (note.id) deleteNote(note.id).then(loadNotes);
                         }}
-                        style={{ marginLeft: "1rem" }}
+                        style={{ marginLeft: "0.5rem" }}
                     >
                         Delete
                     </button>
                 </div>
             ))}
+
         </div>
     );
 }

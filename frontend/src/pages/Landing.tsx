@@ -9,7 +9,7 @@ import img from "../assets/img.png";
 export default function Landing() {
     // state objects
     const [showSignup, setShowSignup] = useState(false);
-    const  { login } = useAuth();
+    const { isAuthenticated, login } = useAuth();
     const navigate = useNavigate();
 
     function handleSignupSuccess(token: string) {
@@ -25,25 +25,31 @@ export default function Landing() {
                     <Navbar />
                 </div>
                 <div className={styles.contentContainer}>
-                    <div className={styles.leftcontainer}>
-                        <h1>Notesly</h1>
-                        <h2>This is notelsy</h2>
-                        <p>Notesly is a web application to store you precious notes</p>
+                    <div className={styles.leftContainer}>
+                        <div className={styles.leftContent}>
+                            <h1 className={styles.title}>Notesly</h1>
+                            <h2>This is notelsy</h2>
+                            <p>Notesly is a web application to store you precious notes</p>
 
-                        <button
-                            className={styles.buttonComponent}
-                            onClick={() => setShowSignup(true)}
-                        >
-                            Get Started
-                        </button>
+                            {!isAuthenticated && (
+                                <button
+                                    className={styles.buttonComponent}
+                                    onClick={() => setShowSignup(true)}
+                                >
+                                    Get Started
+                                </button>
+                            )}
+                        </div>
                     </div>
 
                     <div className={styles.rightContainer}>
-                        <img
-                            src={img}
-                            alt="Notesly Preview"
-                            className={styles.image}
-                        />
+                        <div className={styles.rightContent}>
+                            <img
+                                src={img}
+                                alt="Notesly Preview"
+                                className={styles.image}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

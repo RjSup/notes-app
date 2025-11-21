@@ -35,16 +35,16 @@ export default function Navbar() {
 
             <ul className={styles.navlist}>
                 {/* main links*/}
-                <li>
+                <li className={styles.homebutton}>
                     <Link to="/">Home</Link>
                 </li>
 
                 {isAuthenticated && (
                     <>
-                        <li>
-                            <Link to="/notes">Dashboard</Link>
+                        <li className={styles.notesbutton}>
+                            <Link to="/notes">Notes</Link>
                         </li>
-                        <li>
+                        <li className={styles.profilebutton}>
                             <Link to="/profile">Profile</Link>
                         </li>
                     </>
@@ -55,7 +55,7 @@ export default function Navbar() {
                 {!isAuthenticated && (
                     <>
                         <li>
-                            <button
+                            <button className={styles.loginbutton}
                                 type="button"
                                 onClick={() => setLoginOpen(true)}
                             >
@@ -63,7 +63,7 @@ export default function Navbar() {
                             </button>
                         </li>
                         <li>
-                            <button
+                            <button className={styles.signupbutton}
                                 type="button"
                                 onClick={() => setSignupOpen(true)}
                             >
@@ -76,7 +76,7 @@ export default function Navbar() {
                 {/* user has auth want to leave*/}
                 {isAuthenticated && (
                     <li>
-                        <button
+                        <button className={styles.logoutbutton}
                             type="button"
                             onClick={() => logout()}
                         >
