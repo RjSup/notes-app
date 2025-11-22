@@ -5,7 +5,7 @@ import SignupModal from "../components/SignupModal";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer"
 import {useAuth} from "../context/AuthContext";
-import img from "../assets/img.png";
+import img from "../assets/Untitled.png";
 
 export default function Landing() {
     // state objects
