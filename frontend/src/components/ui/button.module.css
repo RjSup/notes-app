@@ -7,6 +7,7 @@
     background: #8ab4ff;
     color: white;
     transition: color 0.2s ease;
+    max-width: 10rem;
 }
 
 .button:hover {

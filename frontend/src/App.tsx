@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import Landing from "./pages/Landing";
 import Notes from "./pages/Notes";
-import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 //
 
@@ -15,11 +14,6 @@ function App() {
                     <Route path="/notes" element={
                         <ProtectedRoute>
                             <Notes />
-                        </ProtectedRoute>
-                    }/>
-                    <Route path="/profile" element={
-                        <ProtectedRoute>
-                            <Profile />
                         </ProtectedRoute>
                     }/>
                 </Routes>

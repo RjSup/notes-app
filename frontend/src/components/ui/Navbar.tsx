@@ -46,9 +46,6 @@ export default function Navbar() {
                         <li className={styles.notesbutton}>
                             <Link to="/notes">Notes</Link>
                         </li>
-                        <li className={styles.profilebutton}>
-                            <Link to="/profile">Profile</Link>
-                        </li>
                     </>
 
                 )}
