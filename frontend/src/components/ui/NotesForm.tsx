@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from "react";
+import useNoteForm from "../../hooks/useNoteForm";
 import { createNote, updateNote, Note } from "../../api/notesApi";
 import styles from "./notesform.module.css";
+import React from "react";
+import Button from "./Button";
+import Input from "./Input";
+import TextArea from "./TextArea";
 
 type Props = {
     existingNote?: Note;
@@ -8,26 +12,22 @@ type Props = {
     onCancel?: () => void;
 };
 
-export default function NoteForm({ existingNote, onSuccess, onCancel }: Props) {
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
-
-    useEffect(() => {
-        if (existingNote) {
-            setTitle(existingNote.title);
-            setContent(existingNote.content);
-        }
-    }, [existingNote]);
+export default function NotesForm({ existingNote, onSuccess, onCancel }: Props) {
+    // state data from usenoteform
+    const { title, setTitle, content, setContent } = useNoteForm(existingNote);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const noteData = { title, content };
 
-        if (existingNote && existingNote.id) {
-            await updateNote(existingNote.id, noteData);
+        if (existingNote?.id) {
+            await updateNote(existingNote.id, { title, content });
         } else {
-            await createNote(noteData);
+            await createNote({ title, content });
         }
+
+        // reset fields
+        setTitle("");
+        setContent("");
 
         onSuccess();
     };
@@ -38,35 +38,39 @@ export default function NoteForm({ existingNote, onSuccess, onCancel }: Props) {
                 {existingNote ? "Edit Note" : "Create Note"}
             </h2>
 
-            <input
-                className={styles.input}
+            <Input
                 type="text"
-                placeholder="Note title"
+                placeholder="Set title..."
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
-            />
+            >
 
-            <textarea
-                className={styles.textarea}
+            </Input>
+
+            <TextArea
                 placeholder="Write something..."
                 value={content}
+                rows={10}
+                cols={50}
                 onChange={(e) => setContent(e.target.value)}
                 required
-            />
+            >
+            </TextArea>
 
-            <button className={styles.submit} type="submit">
+            <Button variant="primary" type="submit" onClick={handleSubmit}>
                 {existingNote ? "Save Changes" : "Add Note"}
-            </button>
+            </Button>
 
             {onCancel && (
-                <button
-                    className={styles.cancel}
+
+                <Button
+                    variant="primary"
                     type="button"
                     onClick={onCancel}
                 >
                     Cancel
-                </button>
+                </Button>
             )}
         </form>
     );

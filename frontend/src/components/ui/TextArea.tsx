@@ -1,16 +1,16 @@
 import React from "react";
-import styles from "./input.module.css";
+import styles from "./textarea.module.css";
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     label?: string;
     error?: string;
 }
 
-export default function Input({label, error, ...props}: InputProps) {
+export default function Text({label, error, ...props}: InputProps) {
     return (
         <div className={styles.inputWrapper}>
             {label && <label>{label}</label>}
-            <input className={styles.inputSection} {...props} />
+                <textarea className={styles.textarea} {...props}/>
             {error && <p className={styles.inputError}>{error}</p>}
         </div>
     );

@@ -84,7 +84,7 @@ export default function SignupModal({ open, onClose, onSignupSuccess }: SignupMo
                 {errorMsg && <p className="error">{errorMsg}</p>}
 
                 <div className={formStyles.buttons}>
-                <Button type="submit" disabled={loading}>
+                    <Button type="submit" disabled={loading}>
                         {loading ? "Signing up…" : "Signup"}
                     </Button>
                     <Button variant="secondary" type="button" onClick={onClose} disabled={loading}>

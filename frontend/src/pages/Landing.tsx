@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../components/ui/Footer"
 import {useAuth} from "../context/AuthContext";
 import img from "../assets/Untitled.png";
+import Button from "../components/ui/Button";
 
 export default function Landing() {
     // state objects
@@ -33,12 +34,11 @@ export default function Landing() {
                             <p>Notesly is a web application to store you precious notes</p>
 
                             {!isAuthenticated && (
-                                <button
-                                    className={styles.buttonComponent}
+                                <Button
                                     onClick={() => setShowSignup(true)}
                                 >
                                     Get Started
-                                </button>
+                                </Button>
                             )}
                         </div>
                     </div>

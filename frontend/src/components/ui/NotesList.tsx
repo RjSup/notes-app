@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
-import { fetchNotes, deleteNote, Note } from "../../api/notesApi";
-import NoteForm from "./NotesForm";
+import NotesForm from "./NotesForm";
 import styles from "./notelist.module.css"
+import {useNotes} from "../../hooks/useNote";
+import React, {JSX, useState} from "react";
+import Button from "./Button";
 
-export default function NotesList() {
-    const [notes, setNotes] = useState<Note[]>([]);
-    const [editingNote, setEditingNote] = useState<Note | null>(null);
+export default function NotesList(): JSX.Element {
+    const {
+        notes,
+        editingNote,
+        setEditingNote,
+        loadNotes,
+        removeNote,
+    } = useNotes();
 
-    const loadNotes = () => {
-        fetchNotes().then(setNotes);
-    };
-
-    useEffect(() => {
-        loadNotes();
-    }, []);
+    const [loading, setLoading] = useState(false);
+    const [editButtonId, setButtonId] = useState<number | null>(null);
 
     return (
         <div className={styles.main}>
@@ -22,8 +23,10 @@ export default function NotesList() {
             {/* CREATE MODE */}
             {!editingNote && (
                 <div className={styles.createSection}>
-                    <NoteForm
+                    <NotesForm
                         onSuccess={() => {
+                            setEditingNote(null);
+                            setButtonId(null);
                             loadNotes();
                         }}
                     />
@@ -32,13 +35,19 @@ export default function NotesList() {
 
             {/* EDIT MODE */}
             {editingNote && (
-                <NoteForm
+                <NotesForm
                     existingNote={editingNote}
                     onSuccess={() => {
                         setEditingNote(null);
+                        setButtonId(null);
                         loadNotes();
                     }}
-                    onCancel={() => setEditingNote(null)}
+                    // stopped editing
+                    onCancel={() => {
+                        setEditingNote(null);
+                        setButtonId(null);
+                        setLoading(false);
+                    }}
                 />
             )}
 
@@ -50,22 +59,25 @@ export default function NotesList() {
                     <h3 className={styles.noteTitle}>{note.title}</h3>
                     <p className={styles.noteContent}>{note.content}</p>
 
-                    <button
-                        className={styles.editButton}
-                        onClick={() => setEditingNote(note)}
+                    <Button variant="primary"
+                            type="button"
+                            disabled={loading}
+                            onClick={() =>  {
+                                setEditingNote(note);
+                                setButtonId(note.id);
+                            }}
                     >
-                        Edit
-                    </button>
+                        {editButtonId === note.id ? "Editing..." : "Edit"}
+                    </Button>
 
-                    <button
-                        className={styles.deleteButton}
-                        onClick={() => {
-                            if (note.id) deleteNote(note.id).then(loadNotes);
-                        }}
-                        style={{ marginLeft: "0.5rem" }}
-                    >
+                    <Button
+                            variant="secondary"
+                            type="button"
+                            onClick={() => removeNote(note.id)}
+                            disabled={loading}>
                         Delete
-                    </button>
+                    </Button>
+
                 </div>
             ))}
 

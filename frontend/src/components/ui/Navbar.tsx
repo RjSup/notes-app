@@ -4,6 +4,7 @@ import SignupModal from "../auth/SignupModal";
 import LoginModal from "../auth/LoginModal";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
+import Button from "./Button";
 
 export default function Navbar() {
     // states
@@ -24,7 +25,7 @@ export default function Navbar() {
         <nav className={styles.nav} data-state={menuOpen ? "open" : "closed"}>
             <Link className={styles.navlogo} to="/">Notesly</Link>
 
-            {/* Burger things*/}
+            {/* Burger things - need to make toggle button */}
             <button
                 className={styles.navtoggle}
                 onClick={() => setMenuOpen(!menuOpen)}
@@ -32,6 +33,7 @@ export default function Navbar() {
             >
                 <div></div><div></div><div></div>
             </button>
+
 
             <ul className={styles.navlist}>
                 {/* main links*/}
@@ -55,20 +57,20 @@ export default function Navbar() {
                 {!isAuthenticated && (
                     <>
                         <li>
-                            <button className={styles.loginbutton}
+                            <Button
                                 type="button"
                                 onClick={() => setLoginOpen(true)}
                             >
                                 Login
-                            </button>
+                            </Button>
                         </li>
                         <li>
-                            <button className={styles.signupbutton}
+                            <Button
                                 type="button"
                                 onClick={() => setSignupOpen(true)}
                             >
                                 Signup
-                            </button>
+                            </Button>
                         </li>
                     </>
                 )}
@@ -76,12 +78,12 @@ export default function Navbar() {
                 {/* user has auth want to leave*/}
                 {isAuthenticated && (
                     <li>
-                        <button className={styles.logoutbutton}
+                        <Button
                             type="button"
                             onClick={() => logout()}
                         >
                             Logout
-                        </button>
+                        </Button>
                     </li>
                 )}
             </ul>
