@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { fetchNotes, deleteNote, Note } from "../api/notesApi";
-import NoteForm from "../components/NotesForm";
-import styles from "../components/notelist.module.css"
+import { fetchNotes, deleteNote, Note } from "../../api/notesApi";
+import NoteForm from "./NotesForm";
+import styles from "./notelist.module.css"
 
 export default function NotesList() {
     const [notes, setNotes] = useState<Note[]>([]);

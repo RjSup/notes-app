@@ -1,8 +1,8 @@
 import styles from "./navbar.module.css";
 import { useState } from "react";
-import SignupModal from "./SignupModal";
-import LoginModal from "./LoginModal";
-import { useAuth } from "../context/AuthContext";
+import SignupModal from "../auth/SignupModal";
+import LoginModal from "../auth/LoginModal";
+import { useAuth } from "../../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 
 export default function Navbar() {

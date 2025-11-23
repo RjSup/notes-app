@@ -1,6 +1,6 @@
 import styles from "./profile.module.css";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer"
+import Navbar from "../components/ui/Navbar";
+import Footer from "../components/ui/Footer"
 import { useEffect, useState } from "react";
 import {fetchMe, User} from "../api/userApi";
 

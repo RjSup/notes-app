@@ -1,0 +1,23 @@
+.button {
+    padding: 0.5rem;
+    border: 2px solid white;
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+    background: #8ab4ff;
+    color: white;
+    transition: color 0.2s ease;
+}
+
+.button:hover {
+    color: #5f9aff;
+}
+
+.secondary {
+    background: #8ab4ff;
+    border-color: white;
+}
+
+.secondary:hover {
+    color: #5f9aff;
+}

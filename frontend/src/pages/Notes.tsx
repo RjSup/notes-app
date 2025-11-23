@@ -1,7 +1,7 @@
-import NotesList from "../components/NotesList";
+import NotesList from "../components/ui/NotesList";
 import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Navbar";
+import Navbar from "../components/ui/Navbar";
+import Footer from "../components/ui/Navbar";
 
 export default function Notes() {
     return (

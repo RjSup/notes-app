@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { createNote, updateNote, Note } from "../api/notesApi";
+import { createNote, updateNote, Note } from "../../api/notesApi";
 import styles from "./notesform.module.css";
 
 type Props = {
