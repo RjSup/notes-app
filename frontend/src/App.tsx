@@ -4,6 +4,7 @@ import Landing from "./pages/Landing";
 import Notes from "./pages/Notes";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+//
 
 function App() {
     return (
